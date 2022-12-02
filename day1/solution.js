@@ -1,14 +1,14 @@
 import raw_input from './input.js';
 
-const elveWiseCalories = cook(raw_input);
+const elfWiseCalories = cook(raw_input);
 
-console.log(getMaxTotalCalories(elveWiseCalories).calories); // 1st
-console.log(top3TotalCalories(elveWiseCalories).sum); // 2nd
+console.log(getMaxTotalCalories(elfWiseCalories).calories); // 1st
+console.log(top3TotalCalories(elfWiseCalories).sum); // 2nd
 
-// Ans1: returns { calories, ofElve (elve's index) }
+// Ans1: returns { calories, ofElf (elve's index) }
 function getMaxTotalCalories(elvesCalories) {
     let maxTotalCalories = 0;
-    let elveIndex = 0;
+    let elfIndex = 0;
     
     for (let calories_i in elvesCalories) {
         let calories = elvesCalories[calories_i];
@@ -16,11 +16,11 @@ function getMaxTotalCalories(elvesCalories) {
         
         if (totalCalories > maxTotalCalories) {
             maxTotalCalories = totalCalories;
-            elveIndex = calories_i;
+            elfIndex = calories_i;
         };
     };
     
-    return {calories: maxTotalCalories, ofElve: +elveIndex};
+    return {calories: maxTotalCalories, ofElf: +elfIndex};
 };
 
 // Ans2: returns { sum, arr } 
@@ -33,8 +33,8 @@ function top3TotalCalories(elvesCalories, arr = []) {
         return {sum: sumOfAllCalories(top3), arr: top3 };
     };
     
-    // the current max elve will be excluded from calculations
-    elvesCalories.splice(maxCalories.ofElve, 1);
+    // the current max elf will be excluded from calculations
+    elvesCalories.splice(maxCalories.ofElf 1);
     
     return top3TotalCalories(elvesCalories, top3);
 }
