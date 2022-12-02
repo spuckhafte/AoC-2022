@@ -19,17 +19,20 @@ function partOne(rpsData) {
       // chunk = [ opponent's move (a|b|c) , my move (x|y|z) ]
     
       let status;
-      if (chunk[0] == 'a' && chunk[1] == 'x' || chunk[0] == 'b' && chunk[1] == 'y' || chunk[0] == 'c' && chunk[1] == 'z') {
+      if (
+        chunk[0] == 'a' && chunk[1] == 'x' || 
+        chunk[0] == 'b' && chunk[1] == 'y' || 
+        chunk[0] == 'c' && chunk[1] == 'z') {
           status = 't';
-      }  
-      else if(chunk[1] == 'x' && chunk[0] == 'c' || chunk[1] == 'z' && chunk[0] == 'b' || chunk[1] == 'y' && chunk[0] == 'a') {
-          status = 'w'
-      } else {
-        status = 'l'
-      }
+      } else if(
+        chunk[1] == 'x' && chunk[0] == 'c' || 
+        chunk[1] == 'z' && chunk[0] == 'b' || 
+        chunk[1] == 'y' && chunk[0] == 'a') {
+          status = 'w';
+      } else status = 'l';
 
-      let myResponse = chunk[1]
-      score += (getScore(myResponse) + getScore(status))
+      let myResponse = chunk[1];
+      score += (getScore(myResponse) + getScore(status));
   }
   return score;
 }
@@ -81,5 +84,5 @@ function getScore(query) {
 };
 
 function cook(raw) {
-  return raw.split('\n').map(halfRaw => halfRaw.toLowerCase().split(' '))
+  return raw.split('\n').map(halfRaw => halfRaw.toLowerCase().split(' '));
 }
