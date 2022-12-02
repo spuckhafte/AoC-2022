@@ -1,17 +1,18 @@
 import raw_input from './input.js';
 
-/* 
-a,x- rock 
-b,y- paper 
-c,z- scis
-*/
-
 let rpsInput = cook(raw_input);
 
 console.log(partOne(rpsInput));
 console.log(partTwo(rpsInput));
 
 function partOne(rpsData) {
+  
+  /* 
+  a,x- rock 
+  b,y- paper 
+  c,z- scis
+  */
+  
   let score = 0;
   for (let chunk of rpsData) {
       
@@ -34,10 +35,17 @@ function partOne(rpsData) {
 }
 
 function partTwo(rpsData) {
+  
+  /* 
+  a- rock     x- loose
+  b- paper    y- tie
+  c- scis     z- win
+  */
+  
   let score = 0;
   for (let chunk of rpsData) {
       
-      // chunk = [ opponent's move (a|b|c) , my move (x|y|z) ]
+      // chunk = [ opponent's move (a|b|c) , game strategy (x|y|z) ]
     
       let status;
       let myMoveBasedOnStatus;
@@ -64,7 +72,7 @@ function partTwo(rpsData) {
 }
 
 function getScore(query) {
-  let scoreIndex = {
+  let scoreIndex = { 
         'a': 1, 'b': 2, 'c': 3,
         'x': 1, 'y': 2, 'z': 3,
         't': 3, 'w': 6, 'l': 0
