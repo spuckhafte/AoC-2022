@@ -33,7 +33,8 @@ function top3TotalCalories(elvesCalories, arr = []) {
         return {sum: sumOfAllCalories(top3), arr: top3 };
     };
     
-    // the current max elf will be excluded from calculations
+    /* current max elf gets excluded cause its already used
+       and we find the next max elf from the remaining */
     elvesCalories.splice(maxCalories.ofElf 1);
     
     return top3TotalCalories(elvesCalories, top3);
